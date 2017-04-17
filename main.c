@@ -5,7 +5,6 @@
 #include <wiringPiI2C.h>
 
 //Preset information about MPU3050 (gyro sensor)
-#define MPU3050_PWR	(0x6b)
 #define MPU3050_I2C	(0x69)
 #define MPU3050_REG	(0x21)
 
@@ -79,9 +78,6 @@ int main()
 	{
 		return 0;
 	}
-
-	//Power I2C and begin tracking
-	wiringPiI2CWriteReg8(i2cSetup, MPU3050_PWR, 0x01);
 
 	//Declare 'gyroInput' to be used to contain the input from gyro sensor later
 	int gyroInput;
