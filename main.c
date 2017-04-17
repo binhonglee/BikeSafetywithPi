@@ -5,8 +5,8 @@
 #include <wiringPiI2C.h>
 
 //Preset information about MPU3050 (gyro sensor)
-#define MPU3050_I2C	(0x69)
-#define MPU3050_REG	(0x21)
+#define GYRO_I2C	(0x69)
+#define GYRO_REG	(0x21)
 
 //Preset buzzer WiringPi port
 #define	BUZZER	0
@@ -71,7 +71,7 @@ int main()
 
 	//Setup ISR (button) and I2C (gyro sensor)
 	int isrSetup = wiringPiISR(BUTTON, INT_EDGE_FALLING, &buttonInterrupt);
-	int i2cSetup = wiringPiI2CSetup(MPU3050_I2C);
+	int i2cSetup = wiringPiI2CSetup(GYRO_I2C);
 
 	//Check if setups are successful
 	if (i2cSetup < 0||isrSetup < 0)
@@ -96,7 +96,7 @@ int main()
 	while (1)
 	{
 		//Get gyro sensor input
-		gyroInput = wiringPiI2CReadReg8(i2cSetup, MPU3050_REG);
+		gyroInput = wiringPiI2CReadReg8(i2cSetup, GYRO_REG);
 
 		if (gyroInput == 0)
 		{
