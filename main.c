@@ -37,6 +37,7 @@ void buttonInterrupt()
 
 		if (trigger == 0)
 		{
+			printf("Paused\n");
 			//Set trigger and turn off buzzer
 			trigger = 1;
 			digitalWrite(BUZZER, LOW);
@@ -47,6 +48,7 @@ void buttonInterrupt()
 			photoTaken = 0;
 			trigger = 0;
 
+			printf("Continue\n");
 			//Double short beep to inform rider
 			digitalWrite(BUZZER, HIGH);
 			delay(100);
@@ -92,6 +94,8 @@ int main()
 	digitalWrite(BUZZER, HIGH);
 	delay(100);
 	digitalWrite(BUZZER, LOW);
+
+	printf("While loop begins~\n");
 
 	while (1)
 	{
